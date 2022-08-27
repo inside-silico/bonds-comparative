@@ -1,2 +1,2 @@
-docker build --no-cache -t dash-web  .
-docker-compose up -d
+sudo docker build --no-cache -t dash-web  .
+sudo docker-compose up -d
