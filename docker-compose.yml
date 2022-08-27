@@ -20,4 +20,4 @@ services:
     restart: unless-stopped
     container_name: comparative-web
     ports:
-      - "5560:5000"
+      - "8080:5000"
