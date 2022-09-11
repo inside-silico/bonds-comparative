@@ -16,10 +16,10 @@ import datetime
 from datetime import date
 
 
-db_host="sql10.freemysqlhosting.net"
-db_pass="z934gvWkjU"
-db_usr="sql10456490"
-db="sql10456490"
+db_host="comparative-db"
+db_pass="db_user_pass"
+db_usr="db_user"
+db="merval_bonds_tir"
 
 
 line1="#f4c100"
