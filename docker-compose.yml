@@ -16,7 +16,7 @@ services:
       - ./data:/var/lib/mysql
 
   dash-web:
-    image: imperialsys/dash-bonds
+    image: imperialsys/dash-bonds:0.7.2
     restart: unless-stopped
     container_name: comparative-web
     ports:
