@@ -1,3 +1,2 @@
-sudo docker build --no-cache -t dash-web  .
-mkdir ~/db/comparative
+mkdir data
 sudo docker-compose up -d

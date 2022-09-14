@@ -13,10 +13,10 @@ services:
     ports:
       - "5600:3306"
     volumes:
-      - ~/db/comparative:/var/lib/mysql
+      - ./data:/var/lib/mysql
 
   dash-web:
-    image: dash-web
+    image: imperialsys/dash-bonds
     restart: unless-stopped
     container_name: comparative-web
     ports:

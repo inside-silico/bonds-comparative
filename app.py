@@ -26,7 +26,7 @@ def single_tir(ticker):
 
     engine = create_engine("mysql+pymysql://{user}:{pw}@{db_host}/{db}"
                        .format(user=db_usr,pw=db_pass,db_host=db_host,
-                               db="merval_bonds_tir",))
+                               db="bonds_tir",))
 
     df=pd.read_sql_table(ticker,con=engine)
     df.TIR=df.TIR*100
@@ -50,7 +50,7 @@ def diff_page():
         host="comparative-db",
         user="db_user",
         password="db_user_pass",
-        db="merval_bonds_tir"
+        db="bonds_tir"
     )
 
     

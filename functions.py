@@ -19,7 +19,7 @@ from datetime import date
 db_host="comparative-db"
 db_pass="db_user_pass"
 db_usr="db_user"
-db="merval_bonds_tir"
+db="bonds_tir"
 
 
 line1="#f4c100"
