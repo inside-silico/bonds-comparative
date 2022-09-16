@@ -1,4 +1,4 @@
-import os
+from config import *
 from numpy import diff
 import plotly.graph_objs as go 
 import numpy as np
@@ -16,10 +16,7 @@ import datetime
 from datetime import date
 
 
-db_host="comparative-db"
-db_pass="db_user_pass"
-db_usr="db_user"
-db="bonds_tir"
+
 
 
 line1="#f4c100"
@@ -28,9 +25,9 @@ line3="#de2d26"
 
 class graphics:
     def dual_tir(tir_ticker_selected,tir_ticker_selected2):
-        engine = create_engine("mysql+pymysql://{user}:{pw}@{db_host}/{db}"
+        engine = create_engine("mysql+pymysql://{user}:{pw}@{db_host}:{db_port}/{db}"
                     .format(user=db_usr,pw=db_pass,db_host=db_host,
-                            db=db,))
+                            db=db,db_port=db_port))
 
         df1=pd.read_sql_table(tir_ticker_selected,con=engine)
         df1.drop_duplicates(inplace=True)
@@ -68,9 +65,9 @@ class graphics:
         return page
 
     def diff_par(tir_ticker_selected,tir_ticker_selected2):
-        engine = create_engine("mysql+pymysql://{user}:{pw}@{db_host}/{db}"
+        engine = create_engine("mysql+pymysql://{user}:{pw}@{db_host}:{db_port}/{db}"
                     .format(user=db_usr,pw=db_pass,db_host=db_host,
-                            db=db,))
+                            db=db,db_port=db_port))
         df1=pd.read_sql_table(tir_ticker_selected,con=engine)
         df1.drop_duplicates(inplace=True)
         df1=df1[["date","PAR"]].copy()
@@ -106,9 +103,9 @@ class graphics:
         return fig
 
     def dual_par(tir_ticker_selected,tir_ticker_selected2):
-        engine = create_engine("mysql+pymysql://{user}:{pw}@{db_host}/{db}"
+        engine = create_engine("mysql+pymysql://{user}:{pw}@{db_host}:{db_port}/{db}"
                     .format(user=db_usr,pw=db_pass,db_host=db_host,
-                            db=db,))
+                            db=db,db_port=db_port))
 
         df1=pd.read_sql_table(tir_ticker_selected,con=engine)
         df1.drop_duplicates(inplace=True)
@@ -142,12 +139,6 @@ class graphics:
         return page
 
     def ratio(tir_ticker_selected,tir_ticker_selected2):
-
-        today = datetime.date.today()
-        broker = 265
-        dni = '41582667'
-        hb = HomeBroker(int(broker))
-        hb.auth.login(dni=dni, user=user, password=password, raise_exception=True)
 
         df1=hb.history.get_daily_history(tir_ticker_selected, datetime.date(2005,1, 1), today)
         df1.drop_duplicates(inplace=True)

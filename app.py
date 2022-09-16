@@ -1,4 +1,4 @@
-import os
+from config import *
 import plotly.graph_objs as go 
 import dash
 import mysql.connector
@@ -18,15 +18,13 @@ app = dash.Dash(__name__,suppress_callback_exceptions=True)
 
 server = app.server
 
-db_host="comparative-db"
-db_pass="db_user_pass"
-db_usr="db_user"
+
 
 def single_tir(ticker):
 
-    engine = create_engine("mysql+pymysql://{user}:{pw}@{db_host}/{db}"
-                       .format(user=db_usr,pw=db_pass,db_host=db_host,
-                               db="bonds_tir",))
+    engine = create_engine("mysql+pymysql://{user}:{pw}@{db_host}:{db_port}/{db}"
+                .format(user=db_usr,pw=db_pass,db_host=db_host,
+                        db=db,db_port=db_port))
 
     df=pd.read_sql_table(ticker,con=engine)
     df.TIR=df.TIR*100
@@ -47,10 +45,12 @@ def single_tir(ticker):
 
 def diff_page():
     mydb = mysql.connector.connect(
-        host="comparative-db",
-        user="db_user",
-        password="db_user_pass",
-        db="bonds_tir"
+        host=db_host,
+        user=db_usr,
+        password=db_pass,
+        db=db,
+        port=db_port
+
     )
 
     

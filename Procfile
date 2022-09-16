@@ -1,1 +1,0 @@
-web: gunicorn various_graph:server

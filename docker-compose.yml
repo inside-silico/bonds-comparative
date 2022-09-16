@@ -1,23 +1,11 @@
 version: '3'
 
 services:
-  db:
-    image: mysql:8.0
-    restart: unless-stopped
-    container_name: comparative-db
-    environment:
-      - MYSQL_DATABASE=quotes
-      - MYSQL_ROOT_PASSWORD=my_secret_password
-      - MYSQL_USER=db_user
-      - MYSQL_PASSWORD=db_user_pass
-    ports:
-      - "5600:3306"
-    volumes:
-      - ./data:/var/lib/mysql
-
   dash-web:
-    image: imperialsys/dash-bonds:0.7.2
-    restart: unless-stopped
-    container_name: comparative-web
-    ports:
-      - "8080:5000"
+      image: imperialsys/dash-bonds:0.8
+      restart: unless-stopped
+      container_name: comparative-web
+      ports:
+        - "8080:5000"
+      volumes:
+        - ./config.py:/app/config.py
